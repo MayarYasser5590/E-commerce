@@ -1,0 +1,174 @@
+<section class="w-1/2 mx-auto">
+  <h1 class="text-4xl pb-8 h-style text-emerald-600 font-medium text-center">
+    Check Out
+  </h1>
+  <form
+    class="main-sec px-5 py-4 pb-5 rounded-xl shadow-md"
+    [formGroup]="checkOutForm"
+  >
+    <div class="mb-1">
+      @let detailsControl = checkOutForm.get('details');
+      <label
+        for="details"
+        class="block mb-1 ms-1 text-sm font-medium text-emerald-600 dark:text-white"
+        >Details</label
+      >
+      <textarea
+        formControlName="details"
+        id="details"
+        class="bg-gray-50 border border-y-emerald-300 border-x-emerald-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-400 focus:border-emerald-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+      ></textarea>
+      @if (detailsControl?.errors && detailsControl?.touched) {
+      <div
+        class="flex p-4 mb-1 mx-1 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <span class="font-medium"
+            >Ensure that these requirements are met:</span
+          >
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (detailsControl?.getError('required')) {
+            <li>Required</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="mb-1">
+      @let phoneControl = checkOutForm.get('phone');
+      <label
+        for="phone"
+        class="block mb-1 ms-1 text-sm font-medium text-emerald-600 dark:text-white"
+        >phone</label
+      >
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="bg-gray-50 border border-y-emerald-300 border-x-emerald-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-400 focus:border-emerald-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+      />
+      @if (phoneControl?.errors && phoneControl?.touched) {
+      <div
+        class="flex p-4 mb-1 mx-1 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <span class="font-medium"
+            >Ensure that these requirements are met:</span
+          >
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (phoneControl?.getError('required')) {
+            <li>Required</li>
+            }@else if (phoneControl?.getError('pattern')) {
+            <li>Enter a Valid Egyptian number</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="mb-1">
+      @let cityControl = checkOutForm.get('city');
+      <label
+        for="city"
+        class="block mb-1 ms-1 text-sm font-medium text-emerald-600 dark:text-white"
+        >City</label
+      >
+      <input
+        formControlName="city"
+        type="text"
+        id="city"
+        class="bg-gray-50 border border-y-emerald-300 border-x-emerald-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-400 focus:border-emerald-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+      />
+      @if (cityControl?.errors && cityControl?.touched) {
+      <div
+        class="flex p-4 mb-1 mx-1 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <span class="font-medium"
+            >Ensure that these requirements are met:</span
+          >
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (cityControl?.getError('required')) {
+            <li>Required</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex flex-col items-center">
+      <div class="flex items-center justify-between">
+        <button
+          [disabled]="checkOutForm.invalid || isLoading"
+          class="btn-main px-4 mt-3"
+          (click)="cashPayment()"
+          routerLink="/allorders"
+        >
+          cash Payment @if (isLoading) {
+          <span><i class="fas fa-spin fa-spinner ms-1"></i></span>
+          }
+        </button>
+        <p class="text-emerald-600 px-20">OR</p>
+        <button
+          [disabled]="checkOutForm.invalid || isLoading"
+          class="btn-main px-3 mt-3"
+          (click)="onlinePayment()"
+        >
+          Online Payment @if (isLoading) {
+          <span><i class="fas fa-spin fa-spinner ms-1"></i></span>
+          }
+        </button>
+      </div>
+      @if (isSuccess) {
+      <p
+        class="bg-green-50 border mt-3 text-green-800 border-green-300 rounded-md py-2 px-2 w-4/5 text-center"
+      >
+        Data Saved Successfully
+      </p>
+      }
+    </div>
+  </form>
+</section>

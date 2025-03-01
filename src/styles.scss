@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+.btn-main{
+    @apply  disabled:bg-emerald-300 disabled:hover:text-white disabled:hover:border-emerald-300 disabled:hover:bg-emerald-300 bg-emerald-600  text-white border border-emerald-300 rounded-xl py-2 hover:bg-white hover:border-emerald-500 hover:text-emerald-600 transition-colors duration-500 disabled:hover:transition-none
+}
+.h-style {
+    text-shadow: 2px 2px #95d5b2;
+  }
+
+.main-sec{
+    @apply border border-emerald-300 shadow-emerald-100;
+}

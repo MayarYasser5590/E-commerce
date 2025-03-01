@@ -1,0 +1,31 @@
+<section class="relative overflow-x-auto">
+  <table
+    class="w-4/5 mx-auto main-sec shadow-md text-sm text-left rtl:text-right dark:text-white-400"
+  >
+    <thead class="text-xs uppercase bg-white dark:bg-gray-700 dark:text-white">
+      <tr class="text-emerald-600 text-center border-b border-emerald-200">
+        <th scope="col" class="px-6 py-3">Product Id</th>
+        <th scope="col" class="px-6 py-3">is Paid ?</th>
+        <th scope="col" class="px-6 py-3">Payment Method Type</th>
+        <th scope="col" class="px-6 py-3">Total order Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of allOrders ; track order.id ; let i = $index) {
+      <tr
+        class="bg-white border-b text-center dark:bg-gray-800 dark:border-gray-700 border-emerald-200"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ order.id }}
+        </th>
+        <td class="px-6 py-4">{{ order.isPaid }}</td>
+        <td class="px-6 py-4">{{ order.paymentMethodType }}</td>
+        <td class="px-6 py-4">{{ order.totalOrderPrice }} EGP</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>

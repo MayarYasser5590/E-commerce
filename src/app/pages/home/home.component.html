@@ -1,0 +1,101 @@
+<section>
+  <div
+    class="grid sm:grid-cols-1 md:grid-cols-[70%_minmax(0,1fr)] overflow-hidden"
+  >
+    <div>
+      <owl-carousel-o [options]="customMainSlider">
+        <ng-template carouselSlide>
+          <img src="/images/img2.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img1.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="/images/slider-image-3.jpeg"
+            class="w-full h-[300px]"
+            alt=""
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img3.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img4.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img5.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+    <div>
+      <img src="/images/electronics.jpg" class="w-full h-[150px]" alt="" />
+      <img src="/images/slider-image-1.jpeg" class="w-full h-[150px]" alt="" />
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="text-2xl text-emerald-600 py-6">Shop Popular Categories</h2>
+  <owl-carousel-o [options]="customOptions">
+    @for (category of categories; track category._id) {
+    <ng-template carouselSlide>
+      <div>
+        <img
+          [src]="category.image"
+          class="w-full h-[250px]"
+          [alt]="category.name"
+        />
+        <h3 class="text-emerald-600 text-center py-2">{{ category.name }}</h3>
+      </div>
+    </ng-template>
+
+    }
+  </owl-carousel-o>
+</section>
+
+<section>
+  <h2 class="text-4xl text-emerald-600 text-center pb-6">Popular Products</h2>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    @for (product of products.slice(0,12); track product.id) {
+    <div
+      class="border card border-emerald-400/50 rounded-md overflow-hidden shadow relative hover:shadow-lg hover:scale-105 transition-all duration-200"
+    >
+      <div [routerLink]="['/details', product.id]">
+        <div>
+          <img
+            [src]="product.imageCover"
+            class="w-full h-[250px] object-contain"
+            [alt]="product.title"
+          />
+        </div>
+        <div class="card-body px-2 py-4">
+          <h4 class="text-emerald-500 text-xs">{{ product.category.name }}</h4>
+          <h3 class="font-medium">
+            {{ product.title.split(" ", 3).join(" ") }}
+          </h3>
+          <div class="flex justify-between items-center">
+            <span>{{ product.price }} EGP</span>
+            <div class="flex items-center">
+              @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage); track
+              $index) {
+              <i class="fas fa-star text-yellow-300"></i>
+              } @if (product.ratingsAverage % 1 !== 0) {
+              <i class="fa-solid fa-star-half-stroke text-yellow-300"></i>
+              }
+              <span class="text-muted ms-1">{{ product.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        [disabled]="isLoading"
+        (click)="addToCart(product.id)"
+        class="bg-emerald-600 disabled:bg-emerald-300 text-white py-2 px-5 border rounded-lg w-full hover:text-white hover:bg-emerald-800 transition-all duration-200 cursor-pointer"
+      >
+        Add To Card
+      </button>
+    </div>
+    }
+  </div>
+</section>

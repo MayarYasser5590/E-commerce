@@ -1,0 +1,81 @@
+<section class="w-4/5 mx-auto">
+  <h1 class="text-4xl pb-8 h-style text-emerald-600 font-medium text-center">
+    Shop Cart
+  </h1>
+  <div class="main-sec px-5 py-4 pb-5 rounded-xl shadow-md">
+    <div class="flex items-center justify-between pb-4">
+      <span class="text-emerald-600 text-sm"
+        >Total Cart Price : {{ cartDetails.totalCartPrice }} EGP
+      </span>
+      <button
+        (click)="cartId()"
+        [disabled]="cartDetails.totalCartPrice == 0"
+        routerLink="/checkout"
+        routerLinkActive="bg-emerald-800"
+        class="btn-main px-3"
+      >
+        Checkout
+      </button>
+    </div>
+    @for (product of cartDetails.products; track product.product.id) {
+    <div
+      class="grid md:grid-cols-[10%_minmax(0,1fr)] items-center py-2 border-b border-emerald-200"
+    >
+      <div>
+        <img
+          [src]="product.product.imageCover"
+          class="w-full object-contain"
+          [alt]="product.product.title"
+        />
+      </div>
+      <div class="flex items-center justify-between ps-4">
+        <div class="flex flex-col justify-between items-start">
+          <h3 class="text-emerald-600 pb-2 font-bold h-style">
+            {{ product.product.title }}
+          </h3>
+          <h4 class="pb-3 text-emerald-600">
+            <span class="font-medium">Price: </span>
+            {{ product.price }} EGP
+          </h4>
+          <button
+            [disabled]="isLoading && product.product.id === removeItemId"
+            (click)="removeItem(product.product.id)"
+            class="px-3 text-white bg-red-600 py-1 rounded-md hover:bg-red-800 disabled:bg-red-400"
+          >
+            <i class="fas fa-trash-can text-white"></i> Remove @if (isLoading &&
+            (product.product.id === removeItemId)) {
+            <span><i class="fas fa-spin fa-spinner ms-1"></i></span>
+            }
+          </button>
+        </div>
+        <div class="flex items-center justify-center">
+          <button
+            (click)="updateCount(product.product.id, product.count + 1)"
+            class="text-emerald-500 hover:text-emerald-700 text-3xl"
+          >
+            <i class="fa-regular fa-square-plus"></i>
+          </button>
+          <button class="px-1">{{ product.count }}</button>
+          <button
+            (click)="updateCount(product.product.id, product.count - 1)"
+            class="text-emerald-500 hover:text-emerald-700 text-3xl"
+          >
+            <i class="fa-regular fa-square-minus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+    <div class="flex items-center justify-center pt-5">
+      <button
+        (click)="clearItems()"
+        [disabled]="cartDetails.totalCartPrice == 0"
+        class="px-7 text-white bg-red-600 py-1 rounded-md hover:bg-red-800 disabled:bg-red-400"
+      >
+        <i class="fas fa-trash-can text-white"></i> Clear All @if (isLoading) {
+        <span><i class="fas fa-spin fa-spinner ms-1"></i></span>
+        }
+      </button>
+    </div>
+  </div>
+</section>

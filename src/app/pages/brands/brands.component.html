@@ -1,0 +1,27 @@
+<section>
+  <h1 class="text-4xl pb-8 h-style text-emerald-600 font-medium text-center">
+    Brands
+  </h1>
+  <div class="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+    @for (brand of brands; track $index) {
+    <div
+      class="border card border-emerald-400/50 rounded-md overflow-hidden shadow relative hover:shadow-lg hover:scale-105 transition-all duration-200"
+    >
+      <div>
+        <img
+          [src]="brand.image"
+          class="w-full h-[200px] object-contain"
+          [alt]="brand.name"
+        />
+      </div>
+      <div class="card-body py-4">
+        <h2
+          class="text-emerald-500 text-center pt-3 text-xl border-t border-emerald-400/50"
+        >
+          {{ brand.name }}
+        </h2>
+      </div>
+    </div>
+    }
+  </div>
+</section>
