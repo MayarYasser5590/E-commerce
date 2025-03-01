@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
-import { IWishlist } from './../../../../.history/src/app/shared/interfaces/iwishlist_20250301015127';
+import { IWishlist } from '../../shared/interfaces/iwishlist';
 
 @Component({
   selector: 'app-wishlist',
