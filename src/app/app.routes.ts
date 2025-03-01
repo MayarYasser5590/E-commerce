@@ -1,9 +1,12 @@
+import { serverRoutes } from './app.routes.server';
+import { RenderOptions } from './../../node_modules/@nguniversal/express-engine/src/main.d';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { authGuard } from './core/guards/auth.guard';
 import { logedGuard } from './core/guards/loged.guard';
+import { Server } from 'http';
 
 export const routes: Routes = [
     {path:'',component:AuthLayoutComponent , canActivate:[logedGuard] ,children:[
