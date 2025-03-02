@@ -10,13 +10,14 @@ import { Server } from 'http';
 
 export const routes: Routes = [
     {path:'',component:AuthLayoutComponent , canActivate:[logedGuard] ,children:[
-        {path:'' , redirectTo:'home' , pathMatch:'full'},
+        {path:'' , redirectTo:'register' , pathMatch:'full'},
         {path:'login',loadComponent:()=> import("./pages/login/login.component").then((c)=>c.LoginComponent),title:'login'},
         {path:'register',loadComponent:()=> import("././pages/register/register.component").then((c)=>c.RegisterComponent) , title:'register'},
         {path:'forgot',loadComponent:()=> import("././pages/forgot-password/forgot-password.component").then((c)=>c.ForgotPasswordComponent) , title:'reset password'}
 
     ]},
     {path:'',component:BlankLayoutComponent , canActivate:[authGuard] , children:[
+        {path:'' , redirectTo:'home' , pathMatch:'full'},
         {path:'home',loadComponent:()=> import("./pages/home/home.component").then((c)=>c.HomeComponent) , title:'Home'},
         {path:'cart',loadComponent:()=> import("./pages/cart/cart.component").then((c)=>c.CartComponent) , title:'Cart'},
         {path:'products',loadComponent:()=> import("./pages/products/products.component").then((c)=>c.ProductsComponent) , title:'Products'},
