@@ -6,6 +6,7 @@ import { CartService } from '../../core/services/cart/cart.service';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
+import { IWishlist } from '../../shared/interfaces/iwishlist';
 
 @Component({
   selector: 'app-products',
@@ -25,6 +26,7 @@ export class ProductsComponent {
  products:IProduct[] =[];
  isLoading:boolean = false;
  isActive: boolean = false;
+ wishlist : IWishlist [] = [];
 
  ngOnInit(): void {
   this.getProductsData();
@@ -53,9 +55,7 @@ getProductsData():void{
  })
 }
 
-id2 : string = "";
 addToWislist(id:string):void{
-  this.id2 = id;
   this.wishlistSubscribe = this.wishlistService.addProductToWishlist(id).subscribe({
    next:(res)=>{
      this.toastr.success(res.message, 'Hi!');

@@ -12,13 +12,12 @@ import { IWishlist } from '../../shared/interfaces/iwishlist';
 export class WishlistComponent {
  private readonly wishlistService = inject(WishlistService);
      
- wishlist : IWishlist = {} as IWishlist;
+ wishlist : IWishlist[] = [];
 
 
      isLoading:boolean = false;
     removeItemSubscribe:Subscription = new Subscription();
     wishlistSubscribe : Subscription = new Subscription();
-    removeItemId : string = "";
 
   ngOnInit(): void {
      this.getWishlistData(); 
@@ -40,18 +39,13 @@ export class WishlistComponent {
   }
 
   removeItem(id : string):void{
-    this.removeItemId = id;
-    this.isLoading = true;
     this.removeItemSubscribe = this.wishlistService.removeSpecificWishlistItem(id).subscribe({
     next:(res)=>{
-      console.log("jjj");
-
-      this.wishlist = res.data;
-      this.isLoading = false;
+      console.log(res);
+      this.getWishlistData();
     },
     error:(err)=>{
       console.log(err);
-      this.isLoading = false;
     }
    })
   }
