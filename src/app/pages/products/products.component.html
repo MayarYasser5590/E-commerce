@@ -38,10 +38,9 @@
       </div>
       <span
         ><i
+          #myElement
           (click)="addToWislist(product.id)"
-          class="fa-solid fa-heart ps-3 pb-3 hover:text-red-600"
-          [class.text-red-500]="isActive"
-          [class.text-gray-500]="!isActive"
+          class="fa-solid fa-heart text-gray-400 ps-3 pb-3 hover:text-red-600"
         ></i
       ></span>
       <button

@@ -1,4 +1,4 @@
-<section class="w-1/2 mx-auto">
+<section class="w-11/12 md:w-2/3 lg:w-1/2 mx-auto">
   <h1 class="text-3xl pb-4 h-style text-emerald-600 font-medium text-center">
     Register Now
   </h1>
@@ -38,9 +38,7 @@
         </svg>
         <span class="sr-only">Danger</span>
         <div>
-          <span class="font-medium"
-            >Ensure that these requirements are met:</span
-          >
+          <span class="font-medium">Error:</span>
           <ul class="mt-1.5 list-disc list-inside">
             @if (nameControl?.getError('required')) {
             <li>Required</li>
@@ -84,9 +82,7 @@
         </svg>
         <span class="sr-only">Danger</span>
         <div>
-          <span class="font-medium"
-            >Ensure that these requirements are met:</span
-          >
+          <span class="font-medium">Error:</span>
           <ul class="mt-1.5 list-disc list-inside">
             @if (emailControl?.getError('required')) {
             <li>Required</li>
@@ -129,9 +125,7 @@
         </svg>
         <span class="sr-only">Danger</span>
         <div>
-          <span class="font-medium"
-            >Ensure that these requirements are met:</span
-          >
+          <span class="font-medium">Error:</span>
           <ul class="mt-1.5 list-disc list-inside">
             @if (passControl?.getError('required')) {
             <li>Required</li>
@@ -176,7 +170,7 @@
         </svg>
         <span class="sr-only">Danger</span>
         <div>
-          <span class="font-medium">Error</span>
+          <span class="font-medium">Error:</span>
           <ul class="mt-1.5 list-disc list-inside">
             <li>Required</li>
             <li>Password Confirmation is Incorrect</li>
@@ -216,9 +210,7 @@
         </svg>
         <span class="sr-only">Danger</span>
         <div>
-          <span class="font-medium"
-            >Ensure that these requirements are met:</span
-          >
+          <span class="font-medium">Error:</span>
           <ul class="mt-1.5 list-disc list-inside">
             @if (phoneControl?.getError('required')) {
             <li>Required</li>
@@ -234,7 +226,7 @@
       <button
         [disabled]="registerForm.invalid || isLoading"
         type="submit"
-        class="btn-main px-8 mt-3"
+        class="btn-main px-5 md:px-8 mt-3"
       >
         Sign Up @if (isLoading) {
         <span><i class="fas fa-spin fa-spinner ms-1"></i></span>

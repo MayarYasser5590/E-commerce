@@ -1,7 +1,5 @@
 <section>
-  <div
-    class="grid sm:grid-cols-1 md:grid-cols-[70%_minmax(0,1fr)] overflow-hidden"
-  >
+  <div class="grid grid-cols-1 sm:grid-cols-[70%_30%] overflow-hidden">
     <div>
       <owl-carousel-o [options]="customMainSlider">
         <ng-template carouselSlide>
@@ -29,8 +27,16 @@
       </owl-carousel-o>
     </div>
     <div>
-      <img src="/images/electronics.jpg" class="w-full h-[150px]" alt="" />
-      <img src="/images/slider-image-1.jpeg" class="w-full h-[150px]" alt="" />
+      <img
+        src="/images/electronics.jpg"
+        class="w-[445px] sm:w-full h-[150px]"
+        alt=""
+      />
+      <img
+        src="/images/slider-image-1.jpeg"
+        class="w-[445px] sm:w-full h-[150px]"
+        alt=""
+      />
     </div>
   </div>
 </section>
