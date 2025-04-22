@@ -5,7 +5,7 @@
   <div class="main-sec px-5 py-4 pb-5 rounded-xl shadow-md">
     <div class="flex items-center justify-between pb-4">
       <span class="text-emerald-600 text-sm"
-        >Total Cart Price : {{ cartDetails.totalCartPrice }} EGP
+        >Total Cart Price : {{ cartDetails.totalCartPrice | currency : "GBP" }}
       </span>
       <button
         (click)="cartId()"

@@ -43,6 +43,7 @@ export class AllordersComponent implements OnInit , OnDestroy {
     }
 
     ngOnDestroy(): void {
+        localStorage.removeItem("cardId");
         this.userOrderSubscribe.unsubscribe();
     }
 }

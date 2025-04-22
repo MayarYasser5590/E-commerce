@@ -7,10 +7,13 @@ import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { IWishlist } from '../../shared/interfaces/iwishlist';
+import { CurrencyPipe } from '@angular/common';
+import { SearchPipe } from '../../shared/pipes/search/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
-  imports: [RouterLink ],
+  imports: [RouterLink , CurrencyPipe , SearchPipe , FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -20,6 +23,7 @@ export class ProductsComponent {
   private readonly toastr = inject(ToastrService);
   private readonly wishlistService = inject(WishlistService)
   
+ text : string = "";
  productSubscribe :Subscription = new Subscription();
  cartSubscribe :Subscription = new Subscription();
  wishlistSubscribe : Subscription = new Subscription();

@@ -76,12 +76,14 @@
           />
         </div>
         <div class="card-body px-2 py-4">
-          <h4 class="text-emerald-500 text-xs">{{ product.category.name }}</h4>
+          <h4 class="text-emerald-500 text-xs">
+            {{ product.category.name }}
+          </h4>
           <h3 class="font-medium">
-            {{ product.title.split(" ", 3).join(" ") }}
+            {{ product.title | termtext : 2 }}
           </h3>
           <div class="flex justify-between items-center">
-            <span>{{ product.price }} EGP</span>
+            <span>{{ product.price | currency : "GBP" }} </span>
             <div class="flex items-center">
               @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage); track
               $index) {

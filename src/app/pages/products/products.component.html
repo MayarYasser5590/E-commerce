@@ -2,8 +2,16 @@
   <h1 class="text-4xl pb-8 h-style text-emerald-600 font-medium text-center">
     Products
   </h1>
+  <div class="mb-8 w-1/2 mx-auto">
+    <input
+      [(ngModel)]="text"
+      type="search"
+      placeholder="Search by Name ..."
+      class="bg-gray-50 border placeholder:text-emerald-400 border-y-emerald-300 border-x-emerald-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-400 focus:border-emerald-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+    />
+  </div>
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-    @for (product of products; track product.id) {
+    @for (product of products |search : text ; track product.id) {
     <div
       class="border card border-emerald-400/50 rounded-md overflow-hidden shadow relative hover:shadow-lg hover:scale-105 transition-all duration-200"
     >
@@ -23,7 +31,7 @@
             {{ product.title.split(" ", 3).join(" ") }}
           </h3>
           <div class="flex justify-between items-center">
-            <span>{{ product.price }} EGP</span>
+            <span>{{ product.price | currency : "GBP" }}</span>
             <div class="flex items-center">
               @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage); track
               $index) {

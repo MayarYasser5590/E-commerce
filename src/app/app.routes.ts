@@ -1,25 +1,27 @@
-import { serverRoutes } from './app.routes.server';
-import { RenderOptions } from './../../node_modules/@nguniversal/express-engine/src/main.d';
 import { Routes } from '@angular/router';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
-import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { authGuard } from './core/guards/auth.guard';
 import { logedGuard } from './core/guards/loged.guard';
-import { Server } from 'http';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { CartService } from './core/services/cart/cart.service';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
     {path:'',component:AuthLayoutComponent , canActivate:[logedGuard] ,children:[
         {path:'' , redirectTo:'register' , pathMatch:'full'},
-        {path:'login',loadComponent:()=> import("./pages/login/login.component").then((c)=>c.LoginComponent),title:'login'},
-        {path:'register',loadComponent:()=> import("././pages/register/register.component").then((c)=>c.RegisterComponent) , title:'register'},
+        {path:'login', component:LoginComponent ,title:'login'},
+        {path:'register', component:RegisterComponent , title:'register'},
         {path:'forgot',loadComponent:()=> import("././pages/forgot-password/forgot-password.component").then((c)=>c.ForgotPasswordComponent) , title:'reset password'}
 
     ]},
     {path:'',component:BlankLayoutComponent , canActivate:[authGuard] , children:[
         {path:'' , redirectTo:'home' , pathMatch:'full'},
-        {path:'home',loadComponent:()=> import("./pages/home/home.component").then((c)=>c.HomeComponent) , title:'Home'},
-        {path:'cart',loadComponent:()=> import("./pages/cart/cart.component").then((c)=>c.CartComponent) , title:'Cart'},
+        {path:'home',component:HomeComponent , title:'Home'},
+        {path:'cart', component:CartComponent , title:'Cart'},
         {path:'products',loadComponent:()=> import("./pages/products/products.component").then((c)=>c.ProductsComponent) , title:'Products'},
         {path:'brands',loadComponent:()=> import("./pages/brands/brands.component").then((c)=>c.BrandsComponent) , title:'Brands'},
         {path:'categories',loadComponent:()=> import("./pages/categories/categories.component").then((c)=>c.CategoriesComponent) , title:'Categories'},

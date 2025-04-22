@@ -1,8 +1,8 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { OrdersService } from '../../core/services/orders/orders.service';
-import { Subscription } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { OrdersService } from '../../core/services/orders/orders.service';
 
 @Component({
   selector: 'app-checkout',
@@ -37,9 +37,7 @@ export class CheckoutComponent implements OnInit , OnDestroy{
   SubmitForm():void{
     console.log(this.checkOutForm.value);
     console.log( localStorage.getItem("cartId") );
-    
   }
-
   cashPayment():void{
    this.cashPaymentSubscribe = this.ordersService.cashOrder(this.cartId , this.checkOutForm.value).subscribe({
     next:(res)=>{

@@ -8,11 +8,13 @@ import { ProductsService } from '../../core/services/products/products.service';
 import { ICategory } from '../../shared/interfaces/icategory';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ToastrService } from 'ngx-toastr';
+import { CurrencyPipe, SlicePipe } from '@angular/common';
+import { TermtextPipe } from '../../shared/pipes/termtext/termtext.pipe';
 
 
 @Component({
   selector: 'app-home',
-  imports: [CarouselModule , RouterLink],
+  imports: [CarouselModule , RouterLink , CurrencyPipe , TermtextPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -104,7 +106,9 @@ customMainSlider: OwlOptions = {
    this.cartSubscribe = this.cartService.addProductToCard(id).subscribe({
     next:(res)=>{
       this.isLoading = false;
-      this.toastr.success(res.message, 'Hi!');
+      if (res.status === 'success') {
+        this.toastr.success(res.message, 'Hi!');
+      }
       this.cartService.cartNumber.next(res.numOfCartItems);
     },
     error:(err)=>{
